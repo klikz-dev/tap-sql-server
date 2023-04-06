@@ -1,0 +1,123 @@
+{
+  "name": "SQLServer",
+  "description": "Download object data from SQLServer.",
+  "instructions": "",
+  "use_tables": true,
+  "logo_path": "logo.png",
+  "is_oauth": false,
+  "oauth_html": "",
+  "oauth_url": "",
+  "is_unified_application": false,
+  "settings": [
+    {
+      "name": "sqlserver_host",
+      "friendly_name": "Hostname",
+      "description": "The fully qualified domain name or IP address of the database server",
+      "is_secure": false,
+      "is_required": true,
+      "setting_type": "integration",
+      "data_type": "text",
+      "ordinal_position": 1
+    },
+    {
+      "name": "sqlserver_port",
+      "friendly_name": "Port",
+      "description": "The port on which SQLServer is listening - usually 1433",
+      "is_secure": false,
+      "is_required": true,
+      "setting_type": "integration",
+      "data_type": "number",
+      "default_value": "1433",
+      "ordinal_position": 2
+    },
+    {
+      "name": "sqlserver_user",
+      "friendly_name": "Username",
+      "description": "",
+      "is_secure": false,
+      "is_required": true,
+      "setting_type": "integration",
+      "data_type": "text",
+      "ordinal_position": 3
+    },
+    {
+      "name": "sqlserver_password",
+      "friendly_name": "Password",
+      "description": "",
+      "is_secure": true,
+      "is_required": true,
+      "setting_type": "integration",
+      "data_type": "text",
+      "ordinal_position": 4
+    },
+    {
+      "name": "sqlserver_schema",
+      "friendly_name": "Schema",
+      "description": "The schema to connect to - usually dbo",
+      "is_secure": false,
+      "is_required": false,
+      "setting_type": "integration",
+      "data_type": "text",
+      "ordinal_position": 5
+    },
+    {
+      "name": "sqlserver_database",
+      "friendly_name": "Database Name",
+      "description": "The name of the database",
+      "is_secure": false,
+      "is_required": true,
+      "setting_type": "integration",
+      "data_type": "text",
+      "ordinal_position": 6
+    },
+    {
+      "name": "full_replace",
+      "friendly_name": "Completely Replace on Each Sync",
+      "description": "Check this box if you want to completely resynchronize all data in this table each time the sync runs",
+      "is_secure": false,
+      "is_required": false,
+      "setting_type": "table",
+      "data_type": "boolean",
+      "default_value": "false",
+      "ordinal_position": 1
+    },
+    {
+      "name": "id_column",
+      "friendly_name": "Primary Key Column",
+      "description": "The column name for the primary key of this table",
+      "is_secure": false,
+      "is_required": false,
+      "setting_type": "table",
+      "data_type": "select",
+      "options": "optionsGetTableColumns",
+      "visible_if": "full_replace == false",
+      "required_if": "full_replace == false",
+      "ordinal_position": 2
+    },
+    {
+      "name": "sort_column",
+      "friendly_name": "Column to Order By",
+      "description": "The column that should be used to sort data - typically the modified date",
+      "is_secure": false,
+      "is_required": false,
+      "setting_type": "table",
+      "data_type": "select",
+      "options": "optionsGetTableColumns",
+      "visible_if": "full_replace == false",
+      "required_if": "full_replace == false",
+      "ordinal_position": 3
+    },
+    {
+      "name": "day_offset",
+      "friendly_name": "Days to Offset",
+      "description": "Sometimes it helps to perform differential loads that recollect some of the previous sync's records so that you can be certain all records are accounted for",
+      "is_secure": false,
+      "is_required": false,
+      "setting_type": "table",
+      "data_type": "number",
+      "visible_if": "full_replace == false",
+      "required_if": "full_replace == false",
+      "ordinal_position": 4
+    }
+  ]
+}
